@@ -37,10 +37,6 @@ public class ClientSendEmote implements IMessage, IMessageHandler<ClientSendEmot
     @Override
     public IMessage onMessage(ClientSendEmote message, MessageContext ctx) {
         if(ctx.side == Side.SERVER) {
-            if(EmoteRegistry.getEmoteByID(message.emoteID) == null) {
-                EmotesAndGestures.LOG.error("Unknown emote with ID: " + message.emoteID);
-                return null;
-            }
 
             EntityPlayer player = ctx.getServerHandler().playerEntity;
             if(player.worldObj instanceof WorldServer) {
