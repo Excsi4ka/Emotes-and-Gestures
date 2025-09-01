@@ -1,0 +1,16 @@
+[
+{
+  "modid": "Emotes",
+  "name": "Emotes & Gestures",
+  "description": "Simple emotes and gestures to express yourself!",
+  "version": "1.0.0",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Excsi"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
