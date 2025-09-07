@@ -4,9 +4,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import excsi.emotes.and.gestures.client.emote.BasicEmote;
-import excsi.emotes.and.gestures.client.emote.EmoteRegistry;
-import excsi.emotes.and.gestures.client.emote.EmoteRenderer;
+import excsi.emotes.and.gestures.client.render.BasicEmote;
+import excsi.emotes.and.gestures.client.render.EmoteRenderer;
 import excsi.emotes.and.gestures.client.gui.EmoteButton;
 import excsi.emotes.and.gestures.common.CommonProxy;
 import net.minecraft.client.Minecraft;
@@ -17,8 +16,6 @@ import net.minecraftforge.common.MinecraftForge;
 import java.util.Collection;
 
 public class ClientProxy extends CommonProxy {
-
-    public static int previousPOV;
 
     public static int timeLeft;
 
@@ -66,13 +63,12 @@ public class ClientProxy extends CommonProxy {
         if(timeLeft-- <= 0) {
             needsToRevert = false;
             timeLeft = 0;
-            Minecraft.getMinecraft().gameSettings.thirdPersonView = previousPOV;
+            Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
         }
     }
 
     public static void startPOVChange(int pov, int time) {
         timeLeft = time;
-        previousPOV = pov;
-        needsToRevert = true;
+        if(pov == 0) needsToRevert = true;
     }
 }

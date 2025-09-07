@@ -1,4 +1,4 @@
-package excsi.emotes.and.gestures.client.emote;
+package excsi.emotes.and.gestures.client.render;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,5 +30,7 @@ public abstract class BasicEmote {
         return texture;
     }
 
-    public abstract void renderEmote(EntityPlayer player, ModelBiped model, int timeElapsed, float partialTicks);
+    public void onStartEmoting(EmoteProgressWrapper progressWrapper) {}
+
+    public abstract void transformModel(EntityPlayer player, ModelBiped model, int timeElapsed, float partialTicks);
 }

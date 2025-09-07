@@ -7,10 +7,10 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import excsi.emotes.and.gestures.EmotesAndGestures;
-import excsi.emotes.and.gestures.client.emote.BasicEmote;
-import excsi.emotes.and.gestures.client.emote.EmoteRegistry;
-import excsi.emotes.and.gestures.client.emote.EmoteRenderer;
-import excsi.emotes.and.gestures.client.emote.EmotingWrapper;
+import excsi.emotes.and.gestures.client.render.BasicEmote;
+import excsi.emotes.and.gestures.client.EmoteRegistry;
+import excsi.emotes.and.gestures.client.render.EmoteRenderer;
+import excsi.emotes.and.gestures.client.render.EmoteProgressWrapper;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -56,11 +56,11 @@ public class ServerSendEmote implements IMessage, IMessageHandler<ServerSendEmot
                 return null;
             }
 
-            EmotingWrapper handler = EmoteRenderer.emotingPlayers.get(clientPlayer.getUniqueID());
+            EmoteProgressWrapper handler = EmoteRenderer.emotingPlayers.get(clientPlayer.getUniqueID());
             if(handler == null)
-                EmoteRenderer.emotingPlayers.put(clientPlayer.getUniqueID(), new EmotingWrapper(emote));
+                EmoteRenderer.emotingPlayers.put(clientPlayer.getUniqueID(), new EmoteProgressWrapper(clientPlayer, emote));
             else
-                handler.update(emote);
+                handler.update(clientPlayer, emote);
         }
         return null;
     }

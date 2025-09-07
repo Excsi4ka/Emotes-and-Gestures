@@ -1,6 +1,6 @@
-package excsi.emotes.and.gestures.client.emote.gestures;
+package excsi.emotes.and.gestures.client.render.gestures;
 
-import excsi.emotes.and.gestures.client.emote.BasicEmote;
+import excsi.emotes.and.gestures.client.render.BasicEmote;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
@@ -13,11 +13,11 @@ public class CelebrateEmote extends BasicEmote {
     }
 
     @Override
-    public void renderEmote(EntityPlayer player, ModelBiped model, int timeElapsed, float partialTicks) {
+    public void transformModel(EntityPlayer player, ModelBiped model, int timeElapsed, float partialTicks) {
         float move = MathHelper.sin((timeElapsed + partialTicks)) * 0.2f;
         model.bipedRightArm.rotateAngleZ = -0.2f;
         model.bipedRightArm.rotateAngleX = 3.35f + move;
-        model.bipedLeftArm.rotateAngleZ = 0.2f;
-        model.bipedLeftArm.rotateAngleX = 3.35f + move;
+        model.bipedLeftArm.rotateAngleZ = -model.bipedRightArm.rotateAngleZ;
+        model.bipedLeftArm.rotateAngleX = model.bipedRightArm.rotateAngleX;
     }
 }

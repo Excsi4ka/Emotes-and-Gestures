@@ -28,8 +28,17 @@ public class ModelBipedTransformer extends SubTransformer {
         mn.instructions.insertBefore(abstractInsnNode, new VarInsnNode(Opcodes.ALOAD, 7)); //entity
         mn.instructions.insertBefore(abstractInsnNode, new VarInsnNode(Opcodes.ALOAD, 0)); //this
         mn.instructions.insertBefore(abstractInsnNode, new MethodInsnNode(Opcodes.INVOKESTATIC,
-                "excsi/emotes/and/gestures/client/emote/EmoteRenderer",
+                "excsi/emotes/and/gestures/client/render/EmoteRenderer",
                 "bipedRenderCallback",
+                "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/model/ModelBiped;)V",
+                false));
+
+        abstractInsnNode = mn.instructions.getFirst();
+        mn.instructions.insertBefore(abstractInsnNode, new VarInsnNode(Opcodes.ALOAD, 7)); //entity
+        mn.instructions.insertBefore(abstractInsnNode, new VarInsnNode(Opcodes.ALOAD, 0)); //this
+        mn.instructions.insertBefore(abstractInsnNode, new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "excsi/emotes/and/gestures/client/render/EmoteRenderer",
+                "resetTransformations",
                 "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/model/ModelBiped;)V",
                 false));
     }

@@ -2,7 +2,7 @@ package excsi.emotes.and.gestures.client.gui;
 
 import excsi.emotes.and.gestures.client.ClientProxy;
 import excsi.emotes.and.gestures.client.RenderHelper;
-import excsi.emotes.and.gestures.client.emote.BasicEmote;
+import excsi.emotes.and.gestures.client.render.BasicEmote;
 import excsi.emotes.and.gestures.common.Config;
 import excsi.emotes.and.gestures.common.network.ClientSendEmote;
 import excsi.emotes.and.gestures.common.network.PacketManager;
@@ -35,7 +35,10 @@ public class EmoteButton extends GuiButton {
     public void mouseReleased(int x, int y) {
         PacketManager.sendToServer(new ClientSendEmote(emote.getName()));
         if(Config.forcePOV) {
-            ClientProxy.startPOVChange(Minecraft.getMinecraft().gameSettings.thirdPersonView, emote.getMaxEmoteTime());
+            int pov = Minecraft.getMinecraft().gameSettings.thirdPersonView;
+            ClientProxy.startPOVChange(pov, emote.getMaxEmoteTime());
+            if(pov > 0)
+                return;
             Minecraft.getMinecraft().gameSettings.thirdPersonView = Config.pointOfView;
         }
     }

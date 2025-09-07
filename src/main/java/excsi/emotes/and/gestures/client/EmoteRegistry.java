@@ -1,8 +1,13 @@
-package excsi.emotes.and.gestures.client.emote;
+package excsi.emotes.and.gestures.client;
 
-import excsi.emotes.and.gestures.client.emote.gestures.CelebrateEmote;
-import excsi.emotes.and.gestures.client.emote.gestures.ClapEmote;
-import excsi.emotes.and.gestures.client.emote.gestures.WaveEmote;
+import excsi.emotes.and.gestures.client.render.BasicEmote;
+import excsi.emotes.and.gestures.client.render.gestures.BowEmote;
+import excsi.emotes.and.gestures.client.render.gestures.FacePalmEmote;
+import excsi.emotes.and.gestures.client.render.gestures.PointEmote;
+import excsi.emotes.and.gestures.client.render.gestures.CelebrateEmote;
+import excsi.emotes.and.gestures.client.render.gestures.ClapEmote;
+import excsi.emotes.and.gestures.client.render.gestures.ShrugEmote;
+import excsi.emotes.and.gestures.client.render.gestures.WaveEmote;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Collection;
@@ -28,6 +33,10 @@ public class EmoteRegistry {
         register(new WaveEmote("Wave", 50, rlDefault("wave.png")));
         register(new ClapEmote("Clap", 50, rlDefault("clap.png")));
         register(new CelebrateEmote("Celebrate", 50, rlDefault("cheer.png")));
+        register(new ShrugEmote("Shrug", 15, rlDefault("clap.png")));
+        register(new PointEmote("Point", 30, rlDefault("clap.png")));
+        register(new BowEmote("Bow", 40, rlDefault("clap.png")));
+        register(new FacePalmEmote("FacePalm", 40, rlDefault("clap.png")));
     }
 
     public static ResourceLocation rlDefault(String path) {
